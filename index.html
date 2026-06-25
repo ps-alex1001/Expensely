@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Expensely</title>
+</head>
+<body>
+    <header>
+        <h1><em>Xpnsly</em></h1>
+        <h2>Your Expenses tracking made easy.</h2>
+        <hr>
+    </header>
+    <main>
+        <section class="dashboard">
+            <figure class="data-figure">
+                <h2>Total Expenses</h2>
+                <h1 id="total-expenses">$710.00</h1>
+                <h3>Last 30 days</h3>
+            </figure>
+            <figure class="data-figure">
+                <h2>Daily Average</h2>
+                <h1 id="total-expenses">$23.67</h1>
+                <h3>Based on 30 days</h3>
+            </figure>
+            <figure class="data-figure">
+                <h2>Categories</h2>
+                <h1 id="total-expenses">7</h1>
+                <h3>Different types</h3>
+            </figure>
+        </section>
+        <section class="second-section">
+            <aside class="add-expense">
+                <h1><i class="fa-solid fa-circle-plus"></i> Add New Expense</h1>
+                <form action="" class="form">
+                    <div class="form-group-full">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" placeholder="What was this expense for?">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group-half">
+                            <label for="amount">Amount ($)</label>
+                            <input type="number" id="amount" placeholder="0.00">
+                        </div>
+                        
+                        <div class="form-group-half">
+                            <label for="date">Date</label>
+                            <input type="date" id="date">
+                        </div>
+                    </div>
+                </form>
+            </aside>
+            <aside class="chart">
+                <h1><i class="fa-solid fa-chart-pie"></i> Expense Overview</h1>
+            </aside>
+        </section>
+    </main>
+    <footer>
+        Made with 🖤 by Hexo
+    </footer>
+    <script src="https://kit.fontawesome.com/8ec3ed8fc2.js" crossorigin="anonymous"></script>
+</body>
+</html>
