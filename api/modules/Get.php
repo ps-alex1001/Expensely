@@ -6,7 +6,7 @@ class Get {
         $this->pdo = $pdo;
     }
 
-
+    // Working
     public function getStudents(){
         $sqlString = "CALL getAllExpenses()";
         $data = [];

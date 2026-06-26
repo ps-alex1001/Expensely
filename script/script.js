@@ -58,7 +58,7 @@ function updateRecord() {
                 <td>${e.category}</td>
                 <td>₱${e.fld_amount}</td>
                 <td>${e.fld_date}</td>
-                <td>${e.fld_notes || ''}</td>
+                <td>${e.fld_note || ''}</td>
                 <td>
                     <button type="button" class="btn-edit" onclick="editRecord('${e.fld_id}')">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -90,7 +90,7 @@ function deleteRecord(id) {
     var load = {
         payload: { id: id }
     };
-    $.post(baseURL + "deleteexpense", JSON.stringify(load), function (data) {
+    $.post(baseURL + "deleteRecord", JSON.stringify(load), function (data) {
         objExpenses = data.data;
         updateRecord();
     });
@@ -108,7 +108,7 @@ function editRecord(id) {
     document.getElementById("edit-category").value = item.fld_category;
     document.getElementById("edit-amount").value = item.fld_amount;
     document.getElementById("edit-date").value = item.fld_date;
-    document.getElementById("edit-notes").value = item.fld_notes || '';
+    document.getElementById("edit-note").value = item.fld_notes || '';
 
     $("#edit-panel").show();
 }
@@ -119,14 +119,14 @@ function saveRecord() {
     var load = {
         payload: {
             id: id,
-            category: document.getElementById("edit-category").value,
+            category_id: document.getElementById("edit-category").value,
             amount: document.getElementById("edit-amount").value,
             date: document.getElementById("edit-date").value,
-            notes: document.getElementById("edit-notes").value
+            note: document.getElementById("edit-note").value
         }
     };
 
-    $.post(baseURL + "updateexpense", JSON.stringify(load), function (data) {
+    $.post(baseURL + "updateRecord", JSON.stringify(load), function (data) {
         objExpenses = data.data;
         updateRecord();      
         cancelEdit();        

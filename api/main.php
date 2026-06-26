@@ -46,9 +46,9 @@
                     echo json_encode($post->insertRecord($d));
                 break;
 
-                // case 'updateRecord':
-                //     echo json_encode($post->updateRecord($d));
-                // break;
+                case 'updateRecord':
+                    echo json_encode($post->updateRecord($d));
+                break;
 
                 default:
                     http_response_code(400);
