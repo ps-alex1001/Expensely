@@ -1,7 +1,7 @@
 <?php
 
     define("SERVER", "localhost");
-    define("DBASE", "expensely");
+    define("DBASE", "sampledb");
     define("USER", "root");
     define("PWORD", "");
 
