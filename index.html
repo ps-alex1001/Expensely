@@ -8,7 +8,9 @@
     </head>
     <body>
         <header>
-            <h1><em><strong>X</strong>pnsly</em></h1>
+            <h1>
+                <em><strong>X</strong>pnsly</em>
+            </h1>
             <h2>Your Expenses tracking made easy.</h2>
             <hr />
         </header>
@@ -26,7 +28,7 @@
                 </figure>
                 <figure class="data-figure">
                     <h2>Categories</h2>
-                    <h1 id="total-expenses">7</h1>
+                    <h1 id="total-expenses">6</h1>
                     <h3>Different types</h3>
                 </figure>
             </section>
@@ -36,30 +38,6 @@
                         <i class="fa-solid fa-circle-plus"></i> Add New Expense
                     </h1>
                     <form action="" class="form">
-                        <div class="form-group-full">
-                            <label for="description">Description</label>
-                            <input
-                                type="text"
-                                id="description"
-                                placeholder="What was this expense for?" />
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group-half">
-                                <label for="amount">Amount ($)</label>
-                                <input
-                                    type="number"
-                                    id="amount"
-                                    placeholder="0.00"
-                                    step="0.01" />
-                            </div>
-
-                            <div class="form-group-half">
-                                <label for="date">Date</label>
-                                <input type="date" id="date" />
-                            </div>
-                        </div>
-
                         <div class="form-group-full">
                             <label for="category">Category</label>
                             <select id="category" name="category">
@@ -79,6 +57,30 @@
                             </select>
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-group-half">
+                                <label for="amount">Amount ($)</label>
+                                <input
+                                    type="number"
+                                    id="amount"
+                                    placeholder="0.00"
+                                    step="0.01" />
+                            </div>
+
+                            <div class="form-group-half">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" />
+                            </div>
+                        </div>
+
+                        <div class="form-group-full">
+                            <label for="notes">Notes</label>
+                            <input
+                                type="text"
+                                id="notes"
+                                placeholder="Any additional notes?" />
+                        </div>
+
                         <div class="form-action">
                             <button type="submit" class="btn-submit">
                                 Add Expense
@@ -86,15 +88,39 @@
                         </div>
                     </form>
                 </aside>
-                <aside class="chart">
-                    <h1>
-                        <i class="fa-solid fa-chart-pie"></i> Expense Overview
-                    </h1>
-                    <div class="pie-chart"></div>
+                <aside class="expense-list">
+                    <h1><i class="fa-solid fa-list"></i> Expense List</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="1">#</th>
+                                <th colspan="1">Category</th>
+                                <th colspan="1">Amount ($)</th>
+                                <th colspan="1">Date</th>
+                                <th colspan="1">Notes</th>
+                                <th colspan="1">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expense-table-body">
+                            <td colspan="1">1</td>
+                            <td colspan="1">Food</td>
+                            <td colspan="1">$15.00</td>
+                            <td colspan="1">2023-10-01</td>
+                            <td colspan="1">Lunch at restaurant</td>
+                            <td colspan="1">
+                                <button class="btn-edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="btn-delete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tbody>
+                    </table>
                 </aside>
             </section>
         </main>
-        <footer>Made with 🖤 by Hexo</footer>
+        <footer><hr><br><br>Made with ❤️ by Hexo</footer>
         <script
             src="https://kit.fontawesome.com/8ec3ed8fc2.js"
             crossorigin="anonymous"></script>
