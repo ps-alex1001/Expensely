@@ -1,5 +1,5 @@
 var objStudents = [];
-var baseURL = "http://localhost/TMD/api/";
+var baseURL = "http://localhost/Expensely/api/";
 
 $(function(){
     console.log("Jquery Loaded");
