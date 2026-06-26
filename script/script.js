@@ -3,11 +3,11 @@ var baseURL = "http://localhost/Expensely/api/";
 
 $(function(){
     console.log("Jquery Loaded");
-    getStudents();
+    getAllExpenses();
 })
 
 function getAllExpenses(){
-    $.get(baseURL+"getstudents", function(data){
+    $.get(baseURL+"getexpenses", function(data){
         console.log(data.data);
         objExpenses = data.data;
         updateRecord();
