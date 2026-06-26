@@ -6,6 +6,7 @@ $(function () {
     getAllExpenses();
 });
 
+
 function getAllExpenses() {
     $.get(baseURL + "getAllExpenses", function (data) {
         console.log(data.data);
@@ -14,7 +15,7 @@ function getAllExpenses() {
     });
 }
 
-// 
+// add expenses
 function insertRecord() {
     var load = {
         payload: {
@@ -31,7 +32,7 @@ function insertRecord() {
     });
 }
 
-// Done
+// Update Expense Record
 function updateRecord() {
     var tblString = "";
     
@@ -74,13 +75,18 @@ function updateRecord() {
     var categoryCount = uniqueCategories.length;
 
 
-    $('#stat-total').text('₱' + totalExpenses);
-    $('#stat-average').text('₱' + dailyAverage.toFixed(2));
+    $('#stat-total').text('₱' + totalExpenses.toLocaleString('en-US'));
+    $('#stat-average').text(dailyAverage.toLocaleString('en-PH', {
+  style: 'currency',
+  currency: 'PHP'
+}));
 
 
     $('#expense-table-body').html(tblString);
 }
 
+
+// Deletion of Expense Record From List
 function deleteRecord(id) {
     var load = {
         payload: { id: id }
@@ -91,6 +97,7 @@ function deleteRecord(id) {
     });
 }
 
+// Editing of Record
 function editRecord(id) {
     var item = objExpenses.find(function(e) {
         return e.fld_id == id;
@@ -108,6 +115,7 @@ function editRecord(id) {
     $("#edit-panel").show();
 }
 
+// Save Button on Edit Expense
 function saveRecord() {
     var id = document.getElementById("edit-id").value;
 
@@ -128,6 +136,7 @@ function saveRecord() {
     });
 }
 
+// Cancelation Button On Edit Expense
 function cancelEdit() {
     $("#edit-panel").hide();
 }

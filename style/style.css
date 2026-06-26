@@ -267,7 +267,7 @@ th, td {
 .edit-panel-actions .btn-save {
     flex: 1;
     padding: 12px;
-    background-color: #bb6cff; /* Custom brand accent styling */
+    background-color: #bb6cff; 
     color: #ffffff;
     border: none;
     border-radius: 15px;
@@ -286,3 +286,4 @@ th, td {
     font-size: 0.95rem;
     font-weight: 600;
 }
+
