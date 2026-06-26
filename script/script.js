@@ -1,5 +1,7 @@
-var objStudents = [];
+var objExpenses = [];
 var baseURL = "http://localhost/Expensely/api/";
+
+
 
 $(function(){
     console.log("Jquery Loaded");
@@ -7,68 +9,66 @@ $(function(){
 })
 
 function getAllExpenses(){
-<<<<<<< HEAD
-    $.get(baseURL+"getexpenses", function(data){
-=======
     $.get(baseURL+"getAllExpenses", function(data){
->>>>>>> 3fad8aba5bc5e183eca9e02c7d3704e246734d8b
         console.log(data.data);
-        objStudents = data.data;
+        objExpenses = data.data;
         setData();
     })
 }
 
-function addRecord(){
+function insertRecord(){
     var load = {
         payload: { 
-            studno: document.getElementById("studno").value,
-            fname: document.getElementById("fname").value,
-            lname: document.getElementById("lname").value,
-            sex: document.getElementById("sex").value,
-            college: document.getElementById("college").value,
-            program: document.getElementById("program").value
-            
+            category: document.getElementById("category").value,
+            amount: document.getElementById("amount").value,
+            date: document.getElementById("date").value,
+            notes: document.getElementById("notes").value,
         }
     }
-    // console.log(load);
+    console.log(load);
 
-    $.post(baseURL+"addRecord", JSON.stringify(load), function(data){
-        objStudents = data.data;
+    $.post(baseURL+"insertRecord", JSON.stringify(load), function(data){
+        objExpenses = data.data;
         setData();
     })
 }
 
-
+// working 
 function setData(){
     var tblString = "";
-    objStudents.forEach(e => {
+    objExpenses.forEach(e => {
             tblString += `
-                <tr>
-                    <td>${e.fd_studno.toString()}</td>
-                    <td>${e.fd_fname} ${e.fd_lname}</td>
-                    <td>${e.fd_college}</td>
-                    <td>${e.fd_program}</td>
-
-                    <td><button class="btn btn-primary btn-sm" onclick='viewDetails()'>View/Edit</button>
-                    <button class="btn btn-danger btn-sm" onclick='deleteRecord("${e.fd_studno}")'>Delete</button></td>
-                </tr>
+            <tr>
+            <td colspan="1">${e.fld_id}</td>
+            <td colspan="1">${e.category}</td>
+            <td colspan="1">${e.fld_amount}</td>
+            <td colspan="1">${e.fld_date}</td>
+            <td colspan="1">${e.fld_note}</td>
+            <td colspan="1">
+            <button class="btn-edit" onclick='updateRecord("${e.fld_id}")'>
+            <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="btn-delete" onclick='deleteRecord("${e.fld_id}")'>
+            <i class="fa-solid fa-trash"></i>
+            </button>
+            </td>
+            </tr>
             
             `;
         });
-     // document.getElementById("studentData").innerHTML = tblString;
-    $('#studentData').html(tblString);
+     // document.getElementById("expense-table-body").innerHTML = tblString;
+    $('#expense-table-body').html(tblString);
 }
 
-
-function deleteRecord(studno) {
-    console.log(studno);
+function deleteRecord(id) {
+    
+    console.log(id);
     var load = {
-        payload: { studno: studno }
+        payload: { id: id }
     }
-    $.post(baseURL+"deletestudent", JSON.stringify(load), function(data){
-        objStudents = data.data;
+    $.post(baseURL+"deleteRecord", JSON.stringify(load), function(data){
+        objExpenses = data.data;
         setData();
-
     })
 }
 

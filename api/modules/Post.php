@@ -8,9 +8,11 @@ class Post {
 
 
     public function deleteRecord($dt){
-        $id = $dt->payload->studno;
+        $id = $dt->payload->id;
+        // var_dump($id);
         $sqlString = "CALL deleteRecord(?)";
         $data = [];
+
         try {
             $stmt = $this->pdo->prepare($sqlString);
             $stmt->execute([$id]);
@@ -24,10 +26,10 @@ class Post {
 
     public function insertRecord($dt){
         // 
-        $amount = $dt->payload->studno;
-        $categoryid = $dt->payload->fname;
-        $date = $dt->payload->lname;
-        $note = $dt->payload->sex;
+        $amount = $dt->payload->amount;
+        $categoryid = $dt->payload->categoryid;
+        $date = $dt->payload->date;
+        $note = $dt->payload->note;
 
         $sqlString = "CALL insertRecord(?,?,?,?)";
         $data = [];
