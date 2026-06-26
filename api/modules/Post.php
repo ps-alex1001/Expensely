@@ -27,7 +27,7 @@ class Post {
     public function insertRecord($dt){
         // 
         $amount = $dt->payload->amount;
-        $categoryid = $dt->payload->categoryid;
+        $category_id = $dt->payload->category_id;
         $date = $dt->payload->date;
         $note = $dt->payload->note;
 
@@ -36,7 +36,7 @@ class Post {
         try {
             $stmt = $this->pdo->prepare($sqlString);
             // dapat sunod sunod dito
-            $stmt->execute([$amount, $categoryid, $date, $note,]);
+            $stmt->execute([$amount, $category_id, $date, $note,]);
             $res = $stmt->fetchAll();
             $data=$res;
             return array("code"=>200, "data"=>$data);

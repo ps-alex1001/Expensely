@@ -42,7 +42,7 @@
                     echo json_encode($post->deleteRecord($d));
                 break;
                 
-                case 'addRecord':
+                case 'insertRecord':
                     echo json_encode($post->insertRecord($d));
                 break;
 

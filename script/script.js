@@ -5,36 +5,37 @@ $(function () {
     console.log("Jquery Loaded");
     getAllExpenses();
 
-    $(".form").on("submit", function (e) {
-        e.preventDefault();
-        addRecord();
-    });
+    // $(".form").on("submit", function (e) {
+    //     e.preventDefault();
+    //     addRecord();
+    // });
 });
 
 function getAllExpenses() {
-    $.get(baseURL + "getexpenses", function (data) {
+    $.get(baseURL + "getAllExpenses", function (data) {
         console.log(data.data);
         objExpenses = data.data;
         updateRecord();
     });
 }
-
-function addRecord() {
+// 
+function insertRecord() {
     var load = {
         payload: {
-            category: document.getElementById("category").value,
+            category_id: document.getElementById("category").value,
             amount: document.getElementById("amount").value,
             date: document.getElementById("date").value,
-            notes: document.getElementById("notes").value
+            note: document.getElementById("notes").value
         }
     };
 
-    $.post(baseURL + "addexpense", JSON.stringify(load), function (data) {
+    $.post(baseURL + "insertRecord", JSON.stringify(load), function (data) {
         objExpenses = data.data;
         updateRecord();
     });
 }
 
+// Done
 function updateRecord() {
     var tblString = "";
     
@@ -54,19 +55,19 @@ function updateRecord() {
         tblString += `
             <tr id="row-${e.fld_id}">
                 <td>${e.fld_id}</td>
-                <td>${e.fld_category}</td>
-                <td>$${parseFloat(e.fld_amount).toFixed(2)}</td>
+                <td>${e.category}</td>
+                <td>₱${e.fld_amount}</td>
                 <td>${e.fld_date}</td>
                 <td>${e.fld_notes || ''}</td>
                 <td>
-                    <button class="btn-edit" onclick="editRecord('${e.fld_id}')">
+                    <button type="button" class="btn-edit" onclick="editRecord('${e.fld_id}')">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button class="btn-delete" onclick="deleteRecord('${e.fld_id}')">
+                    <button type="button" class="btn-delete" onclick="deleteRecord('${e.fld_id}')">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </td>
-            </tr>
+            </tr>   
         `;
     });
 
