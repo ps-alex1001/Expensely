@@ -23,18 +23,14 @@
 
     switch($_SERVER['REQUEST_METHOD']){
         case 'GET': 
-            
             switch($req[0]){
-                case 'getstudents':
+                case 'getAllExpenses':
                     echo json_encode($get->getStudents());
-                break;
-
-                case 'geteducation':
-                    echo 'Here in getEducation';
                 break;
 
                 default:
                     http_response_code(400);
+                    
             }
         break;
 
@@ -42,13 +38,17 @@
             $d = json_decode(file_get_contents("php://input"));
             switch($req[0]){
 
-                case 'deletestudent':
-                    echo json_encode($post->deleteStudent($d));
+                case 'deleteRecord':
+                    echo json_encode($post->deleteRecord($d));
                 break;
                 
-                case 'addstudent':
-                    echo json_encode($post->addStudent($d));
+                case 'addRecord':
+                    echo json_encode($post->addRecord($d));
                 break;
+
+                // case 'updateRecord':
+                //     echo json_encode($post->updateRecord($d));
+                // break;
 
                 default:
                     http_response_code(400);
