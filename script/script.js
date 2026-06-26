@@ -1,71 +1,70 @@
-var objExpenses = [];
+var objStudents = [];
 var baseURL = "http://localhost/Expensely/api/";
 
 $(function(){
     console.log("Jquery Loaded");
-    getStudents();
+    getAllExpenses();
 })
 
 function getAllExpenses(){
-    $.get(baseURL+"getstudents", function(data){
+    $.get(baseURL+"getAllExpenses", function(data){
         console.log(data.data);
-        objExpenses = data.data;
-        updateRecord();
+        objStudents = data.data;
+        setData();
     })
 }
 
 function addRecord(){
     var load = {
         payload: { 
-            category: document.getElementById("category").value,
-            amount: document.getElementById("amount").value,
-            date: document.getElementById("date").value,
-            notes: document.getElementById("notes").value,
+            studno: document.getElementById("studno").value,
+            fname: document.getElementById("fname").value,
+            lname: document.getElementById("lname").value,
+            sex: document.getElementById("sex").value,
+            college: document.getElementById("college").value,
+            program: document.getElementById("program").value
+            
         }
     }
+    // console.log(load);
 
     $.post(baseURL+"addRecord", JSON.stringify(load), function(data){
-        objExpenses = data.data;
-        updateRecord();
+        objStudents = data.data;
+        setData();
     })
 }
 
 
-function updateRecord(){
+function setData(){
     var tblString = "";
-    objExpenses.forEach(e => {
+    objStudents.forEach(e => {
             tblString += `
-            <tr>
-            <td colspan="1">${e.fld_id.toString()}</td>
-            <td colspan="1">${e.fld_category}</td>
-            <td colspan="1">${e.fld_amount}</td>
-            <td colspan="1">${e.fld_date}</td>
-            <td colspan="1">${e.fld_notes}</td>
-            <td colspan="1">
-            <button class="btn-edit" onclick='updateRecord("${e.fld_id}")'>
-            <i class="fa-solid fa-pen-to-square"></i>
-            </button>
-            <button class="btn-delete" onclick='deleteRecord("${e.fld_id}")'>
-            <i class="fa-solid fa-trash"></i>
-            </button>
-            </td>
-            </tr>
+                <tr>
+                    <td>${e.fd_studno.toString()}</td>
+                    <td>${e.fd_fname} ${e.fd_lname}</td>
+                    <td>${e.fd_college}</td>
+                    <td>${e.fd_program}</td>
+
+                    <td><button class="btn btn-primary btn-sm" onclick='viewDetails()'>View/Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick='deleteRecord("${e.fd_studno}")'>Delete</button></td>
+                </tr>
             
             `;
         });
-     // document.getElementById("expense-table-body").innerHTML = tblString;
-    $('#expense-table-body').html(tblString);
+     // document.getElementById("studentData").innerHTML = tblString;
+    $('#studentData').html(tblString);
 }
 
 
-function deleteRecord(id) {
-    console.log(id);
+function deleteRecord(studno) {
+    console.log(studno);
     var load = {
-        payload: { id: id }
+        payload: { studno: studno }
     }
-    $.post(baseURL+"deleteExpense", JSON.stringify(load), function(data){
-        objExpenses = data.data;
-        updateRecord();
+    $.post(baseURL+"deletestudent", JSON.stringify(load), function(data){
+        objStudents = data.data;
+        setData();
+
     })
 }
 
