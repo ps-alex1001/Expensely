@@ -4,11 +4,6 @@ var baseURL = "http://localhost/Expensely/api/";
 $(function () {
     console.log("Jquery Loaded");
     getAllExpenses();
-
-    // $(".form").on("submit", function (e) {
-    //     e.preventDefault();
-    //     addRecord();
-    // });
 });
 
 function getAllExpenses() {
@@ -18,6 +13,7 @@ function getAllExpenses() {
         updateRecord();
     });
 }
+
 // 
 function insertRecord() {
     var load = {
@@ -78,9 +74,8 @@ function updateRecord() {
     var categoryCount = uniqueCategories.length;
 
 
-    $('#stat-total').text('$' + totalExpenses.toFixed(2));
-    $('#stat-average').text('$' + dailyAverage.toFixed(2));
-    $('#stat-categories').text(categoryCount);
+    $('#stat-total').text('₱' + totalExpenses);
+    $('#stat-average').text('₱' + dailyAverage.toFixed(2));
 
 
     $('#expense-table-body').html(tblString);
@@ -105,10 +100,10 @@ function editRecord(id) {
 
     document.getElementById("edit-id").value = item.fld_id;
     document.getElementById("edit-id-label").innerText = item.fld_id;
-    document.getElementById("edit-category").value = item.fld_category;
+    document.getElementById("edit-category").ariaSelected = item.fld_category;
     document.getElementById("edit-amount").value = item.fld_amount;
     document.getElementById("edit-date").value = item.fld_date;
-    document.getElementById("edit-note").value = item.fld_notes || '';
+    document.getElementById("edit-note").value = item.fld_note || '';
 
     $("#edit-panel").show();
 }
