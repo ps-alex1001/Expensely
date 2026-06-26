@@ -18,17 +18,17 @@
             <section class="dashboard">
                 <figure class="data-figure">
                     <h2>Total Expenses</h2>
-                    <h1 id="total-expenses">$710.00</h1>
+                    <h1 id="stat-total">$0.00</h1>
                     <h3>Last 30 days</h3>
                 </figure>
                 <figure class="data-figure">
                     <h2>Daily Average</h2>
-                    <h1 id="total-expenses">$23.67</h1>
+                    <h1 id="stat-average">$0.00</h1>
                     <h3>Based on 30 days</h3>
                 </figure>
                 <figure class="data-figure">
                     <h2>Categories</h2>
-                    <h1 id="total-expenses">6</h1>
+                    <h1 id="stat-categories">0</h1>
                     <h3>Different types</h3>
                 </figure>
             </section>
@@ -117,15 +117,75 @@
                             </td>
                         </tbody>
                     </table>
+                    <div id="edit-panel" class="edit-panel-hidden">
+                        <h3>
+                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                            Expense #<span id="edit-id-label"></span>
+                        </h3>
+
+                        <input type="hidden" id="edit-id" />
+
+                        <div class="form-group-full">
+                            <label for="edit-category">Category</label>
+                            <select id="edit-category">
+                                <option value="food">Food</option>
+                                <option value="transportation">
+                                    Transportation
+                                </option>
+                                <option value="utilities">Utilities</option>
+                                <option value="entertainment">
+                                    Entertainment
+                                </option>
+                                <option value="shopping">Shopping</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row edit-panel-row">
+                            <div class="form-group-half">
+                                <label for="edit-amount">Amount ($)</label>
+                                <input
+                                    type="number"
+                                    id="edit-amount"
+                                    step="0.01" />
+                            </div>
+                            <div class="form-group-half">
+                                <label for="edit-date">Date</label>
+                                <input type="date" id="edit-date" />
+                            </div>
+                        </div>
+
+                        <div class="form-group-full">
+                            <label for="edit-notes">Notes</label>
+                            <input type="text" id="edit-notes" />
+                        </div>
+
+                        <div class="edit-panel-actions">
+                            <button
+                                type="button"
+                                class="btn-submit"
+                                onclick="saveRecord()">
+                                Save Changes
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-cancel"
+                                onclick="cancelEdit()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </aside>
             </section>
         </main>
-        <footer><hr><br><br>Made with ❤️ by Hexo</footer>
+        <footer>
+            <hr />
+            <br /><br />Made with ❤️ by Hexo
+        </footer>
         <script
             src="https://kit.fontawesome.com/8ec3ed8fc2.js"
             crossorigin="anonymous"></script>
         <script src="script/jquery-4.0.0.min.js"></script>
         <script src="script/script.js"></script>
-
     </body>
 </html>

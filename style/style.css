@@ -198,10 +198,7 @@ th, td {
     border-radius: 15px;
     font-size: 0.95rem;
     font-weight: 600;
-    cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        transform 0.1s ease;
+
 }
 .btn-delete {
     padding: 0.5rem 1rem;
@@ -211,8 +208,81 @@ th, td {
     border-radius: 15px;
     font-size: 0.95rem;
     font-weight: 600;
-    cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        transform 0.1s ease;
+}
+
+
+#edit-panel {
+    display: none; 
+    margin-top: 3vh;
+    padding-top: 1.5rem;
+    text-align: left;
+}
+
+#edit-panel h3 {
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #1e1514;
+    margin-bottom: 1rem;
+}
+
+
+.edit-panel-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+#edit-panel input[type="text"],
+#edit-panel input[type="number"],
+#edit-panel input[type="date"],
+#edit-panel select {
+    width: 100%;
+    padding: 15px 10px;
+    border: 1px solid #e9e9e9;
+    border-radius: 15px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-family: inherit;
+    color: #1e1514;
+}
+
+#edit-panel label {
+    font-weight: 500;
+    margin-bottom: 0.4em;
+    margin-top: 0.4em;
+    color: #1e1514;
+    display: block;
+}
+
+
+.edit-panel-actions {
+    margin-top: 2vh;
+    display: flex;
+    gap: 1vw;
+    width: 100%;
+}
+
+.edit-panel-actions .btn-save {
+    flex: 1;
+    padding: 12px;
+    background-color: #bb6cff; /* Custom brand accent styling */
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+}
+
+
+.edit-panel-actions .btn-cancel {
+    padding: 12px 24px;
+    background-color: #e9e9e9;
+    color: #1e1514;
+    border: 1px solid #dcdcdc;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
 }
